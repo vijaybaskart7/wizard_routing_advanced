@@ -1,38 +1,63 @@
 .App {
+  font-family: sans-serif;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wizard {
+  max-width: 650px;
+  width: 90%;
+  margin: 4rem auto 0;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 50px 1fr 35px;
+  grid-template-areas:
+    "progress"
+    "content"
+    "buttons";
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.wizard__progress {
+  text-align: center;
+  grid-area: progress;
+  padding: 1rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.wizard__content {
+  grid-area: content;
+  padding: 1rem;
+  background: #eeeeee;
+  padding-top: 1rem;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  height: 200px;
+}
+
+.wizard__buttons {
+  display: grid;
+  grid-area: buttons;
+  grid-template-columns: 150px 150px;
+  grid-template-areas: "left right";
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0.5rem;
+  padding-bottom: 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.wizard__buttons-left {
+  grid-area: left;
+  float: left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.wizard__buttons-left:disabled,
+.wizard__buttons-right:disabled {
+  background: #333;
+  color: red;
+  pointer-events: none;
+  cursor: default;
+}
+
+.wizard__buttons-right {
+  grid-area: right;
+  float: right;
 }
